@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorFontAct1</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="titleTextColor">@color/colorFontAct1</item>
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
+
+    <style name="birthdayColor">parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorFontAct1</item>
+        <item name="android:textSize">36sp</item>
+
+    </style>
+
+
+
+
+
+</resources>
