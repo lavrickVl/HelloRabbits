@@ -42,8 +42,8 @@ public class Main2Activity extends AppCompatActivity {
     String todayTimeTxt;
 
     int birthdayMonth = Calendar.JULY;
-    int birthdayDate = 22;
-    int birthdayYear = 1993;
+    int birthdayDate = 4;
+    int birthdayYear = 1900;
 
     String gender = " sister ";   // or bro
 
@@ -80,7 +80,7 @@ public class Main2Activity extends AppCompatActivity {
         // TextView testRes = (TextView) findViewById(R.id.lvl_now);
         //   date.set(y,m,1,12,0,0);
 
-        fDate.set(todayYear, birthdayMonth, birthdayDate, 10, 00 , 00);  // set your birthday
+        fDate.set(todayYear, birthdayMonth, birthdayDate, 22, 20 , 00);  // set your birthday
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("y, EEE, d MMMM, kk : mm", Locale.getDefault());  //for formatting and parsing dates in a locale-sensitive manner
 
@@ -99,14 +99,16 @@ public class Main2Activity extends AppCompatActivity {
 
 
         if (currentTime.get(Calendar.DAY_OF_YEAR) == fDate.get(Calendar.DAY_OF_YEAR)) {
+
+            compareView.setTypeface(Typeface.create("cursive",Typeface.NORMAL)); // a big riddle ?
             trueAge = (currentTime.get(Calendar.YEAR) - birthdayYear) - 1;
             headTxt.setText(String.format("Today is your birthday , %s !" , gender));
             age.setText(trueAge + "");
             age.setTextColor(getResources().getColor(R.color.colorAccent2));
             compareView.setTextColor(getResources().getColor(R.color.colorFontAct1));
-            compareView.setTextSize(24);
             time.setText("");
             ftime.setText("");
+
 
             imageView.setImageResource(R.drawable.androidparty);
 
@@ -115,7 +117,6 @@ public class Main2Activity extends AppCompatActivity {
 
             //       ftime.setText("time is now");
             age.setText(trueAge + "");
-            age.setTextColor(R.style.birthdayColor);
             imageView.setImageResource(R.drawable.error404);
             errorPlayer.start();
         }
@@ -153,6 +154,14 @@ public class Main2Activity extends AppCompatActivity {
         mediaPlayer.pause();
         birthdayPlayer.pause();
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        mediaPlayer.pause();
+        birthdayPlayer.start();
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -248,6 +257,8 @@ public class Main2Activity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                compareView.setTypeface(Typeface.create("cursive",Typeface.NORMAL));
+                compareView.setTextSize(34);
                 compareView.setText(" Wish you good health, happiness and success !!! ");
                 age.setText(trueAge + 1 + "");
                 mediaPlayer.stop();
