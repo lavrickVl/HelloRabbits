@@ -40,10 +40,9 @@ public class Main2Activity extends AppCompatActivity {
 
     String ftimeTxt;
     String todayTimeTxt;
-
-    int birthdayMonth = Calendar.JULY;
-    int birthdayDate = 4;
-    int birthdayYear = 1900;
+    int birthdayMonth = Calendar.DECEMBER;
+    int birthdayDate = 31;
+    int birthdayYear = 1949;
 
     String gender = " sister ";   // or bro
 
@@ -80,7 +79,7 @@ public class Main2Activity extends AppCompatActivity {
         // TextView testRes = (TextView) findViewById(R.id.lvl_now);
         //   date.set(y,m,1,12,0,0);
 
-        fDate.set(todayYear, birthdayMonth, birthdayDate, 22, 20 , 00);  // set your birthday
+        fDate.set(todayYear, birthdayMonth, birthdayDate, 16, 20 , 00);  // set your birthday
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("y, EEE, d MMMM, kk : mm", Locale.getDefault());  //for formatting and parsing dates in a locale-sensitive manner
 
@@ -100,6 +99,7 @@ public class Main2Activity extends AppCompatActivity {
 
         if (currentTime.get(Calendar.DAY_OF_YEAR) == fDate.get(Calendar.DAY_OF_YEAR)) {
 
+            compareView.setTextSize(20);
             compareView.setTypeface(Typeface.create("cursive",Typeface.NORMAL)); // a big riddle ?
             trueAge = (currentTime.get(Calendar.YEAR) - birthdayYear) - 1;
             headTxt.setText(String.format("Today is your birthday , %s !" , gender));
@@ -124,6 +124,7 @@ public class Main2Activity extends AppCompatActivity {
 
         if (result < 0 && currentTime.get(Calendar.DAY_OF_YEAR) != fDate.get(Calendar.DAY_OF_YEAR)) {
             fDate.set(Calendar.YEAR, todayYear + 1);
+            age.setText((trueAge+1) + "");
             ftimeTxt = simpleDateFormat.format(fDate.getTime());
             result = fDate.getTimeInMillis() - currentTime.getTimeInMillis();
             ftime.setText(" your birthday in next year ");
