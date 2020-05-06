@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,11 +41,11 @@ public class Main2Activity extends AppCompatActivity {
 
     String ftimeTxt;
     String todayTimeTxt;
-    int birthdayMonth = Calendar.DECEMBER;
-    int birthdayDate = 31;
-    int birthdayYear = 1949;
+    int birthdayMonth = Calendar.JANUARY;
+    int birthdayDate = 1;
+    int birthdayYear = 1900;
 
-    String gender = " sister ";   // or bro
+    String gender = " bro ";   // or bro
 
     int todayYear = currentTime.get(Calendar.YEAR);
     int trueAge = currentTime.get(Calendar.YEAR) - birthdayYear-1;
@@ -60,7 +61,7 @@ public class Main2Activity extends AppCompatActivity {
         mediaPlayer = MediaPlayer.create(this, R.raw.song);
         errorPlayer = MediaPlayer.create(this, R.raw.error);
         birthdayPlayer = MediaPlayer.create(this, R.raw.birthday);
-        afListenerMusic = new AFListener(mediaPlayer);
+        afListenerMusic = new AFListener(mediaPlayer, birthdayPlayer);
         audioManager.requestAudioFocus(afListenerMusic, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
 
         displayOk();
@@ -79,7 +80,7 @@ public class Main2Activity extends AppCompatActivity {
         // TextView testRes = (TextView) findViewById(R.id.lvl_now);
         //   date.set(y,m,1,12,0,0);
 
-        fDate.set(todayYear, birthdayMonth, birthdayDate, 16, 20 , 00);  // set your birthday
+        fDate.set(todayYear, birthdayMonth, birthdayDate, 21, 14 , 00);  // set your birthday
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("y, EEE, d MMMM, kk : mm", Locale.getDefault());  //for formatting and parsing dates in a locale-sensitive manner
 
@@ -175,10 +176,12 @@ public class Main2Activity extends AppCompatActivity {
     class AFListener implements AudioManager.OnAudioFocusChangeListener {
 
         MediaPlayer mp;
+        MediaPlayer mp2;
 
-        public AFListener(MediaPlayer mp) {
+        public AFListener(MediaPlayer mp, MediaPlayer mp2) {
 
             this.mp = mp;
+            this.mp2 = mp2;
         }
 
         @Override
@@ -187,17 +190,19 @@ public class Main2Activity extends AppCompatActivity {
             switch (focusChange) {
                 case AudioManager.AUDIOFOCUS_LOSS:
                     mp.pause();
-                    break;
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
-                    mp.pause();
+                    mp2.pause();
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
                     mp.setVolume(0.3f, 0.3f);
+                    mp2.setVolume(0.3f, 0.3f);
                     break;
                 case AudioManager.AUDIOFOCUS_GAIN:
                     if (!mp.isPlaying())
                         mp.start();
                     mp.setVolume(1.0f, 1.0f);
+                    if (!mp2.isPlaying())
+                        mp2.start();
+                    mp2.setVolume(1.0f, 1.0f);
                     break;
             }
         }

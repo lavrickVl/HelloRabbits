@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         switch2 = (Switch) findViewById(R.id.switch1);
 
-        int a = main2Activity.birthdayMonth;// setings on M2Activity
         int b = main2Activity.birthdayDate;
+        int a = main2Activity.birthdayMonth;// setings on M2Activity
 
         dateSwitch = b + "." + (a+1);
 
