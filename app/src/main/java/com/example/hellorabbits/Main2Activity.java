@@ -40,9 +40,9 @@ public class Main2Activity extends AppCompatActivity {
 
     String ftimeTxt;
     String todayTimeTxt;
-    int birthdayMonth = Calendar.DECEMBER;
-    int birthdayDate = 31;
-    int birthdayYear = 1949;
+    int birthdayMonth = Calendar.MAY;
+    int birthdayDate = 29;
+    int birthdayYear = 2010;
 
     String gender = " sister ";   // or bro
 
@@ -79,7 +79,7 @@ public class Main2Activity extends AppCompatActivity {
         // TextView testRes = (TextView) findViewById(R.id.lvl_now);
         //   date.set(y,m,1,12,0,0);
 
-        fDate.set(todayYear, birthdayMonth, birthdayDate, 16, 20 , 00);  // set your birthday
+        fDate.set(todayYear, birthdayMonth, birthdayDate, 7, 0, 0);  // set your birthday
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("y, EEE, d MMMM, kk : mm", Locale.getDefault());  //for formatting and parsing dates in a locale-sensitive manner
 
@@ -240,8 +240,8 @@ public class Main2Activity extends AppCompatActivity {
             b = b - 1;
         }
         if (b < 0) {
-            a = a - 1;
             b = 24 + b;
+            a = a - 1;
         }
 
         String updatingTimer = a + " days : " + b + " hours " + c + " minutes " + d + " sec ";
