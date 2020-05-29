@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     Switch switch2;
     Main2Activity main2Activity = new Main2Activity();
+    String dateSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         switch2 = (Switch) findViewById(R.id.switch1);
 
-       int a = main2Activity.birthdayMonth;   // setings on M2Activity
+        int a = main2Activity.birthdayMonth;// settings on M2Activity
         int b = main2Activity.birthdayDate;
-       String dateSwitch = a+"."+b ;
+
+        dateSwitch = b + "." + (a+1);
+
         switch2.setText(dateSwitch);
 
         button.setOnClickListener(new View.OnClickListener() {
