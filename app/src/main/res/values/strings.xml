@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">HelloRabbits</string>
     <string name="HeaderAct2">That\'s an error 404</string>
+    <string name="set_birthday">Set yor birthday date</string>
+    <string name="wish_birthday">Wish you good health, happiness and success !!!</string>
+
+
+    // settings
+    <string name="first_enter">first_enter</string>
+    <string name="btn_save">Save</string>
+
 </resources>
